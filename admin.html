@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aurora Spectrum Admin</title><style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Segoe UI,sans-serif;background:linear-gradient(#121a33 0 220px,#f4f6fb 220px);color:#20263a;min-height:100vh}
+.wrap{max-width:1150px;margin:auto;padding:30px 16px 60px}.brand{color:white;margin-bottom:28px}.brand h1{margin:0}
+.card{background:white;border-radius:20px;padding:28px;box-shadow:0 15px 45px #1112;margin-bottom:18px}.muted{color:#68718b}
+input{width:100%;padding:12px;border:1px solid #ccd3e1;border-radius:10px}.btn{padding:11px 16px;border:0;border-radius:10px;background:#6957e8;color:white;font-weight:700;cursor:pointer}
+.hidden{display:none}.error{background:#fff0ef;padding:12px;border-radius:10px;margin-top:12px}.table{width:100%;border-collapse:collapse}.table td,.table th{padding:10px;border-bottom:1px solid #e3e7f0;text-align:left;font-size:13px}
+.barrow{display:grid;grid-template-columns:280px 1fr 55px;gap:10px;align-items:center;margin:10px 0}.bar{height:10px;background:#e9edf6;border-radius:10px;overflow:hidden}.bar div{height:100%;background:linear-gradient(90deg,#42d5d2,#6957e8)}
+.feedback{background:#f6f7fb;border-radius:12px;padding:14px;margin-top:14px}.pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#f0edff;color:#5542ca;font-size:12px;font-weight:700}
+</style></head><body><div class="wrap"><div class="brand"><h1>Aurora Spectrum Admin</h1><p>Pilot assessment dashboard • v0.2</p></div><div class="card" id="login"><h2>Administrator sign in</h2><input type="password" id="pw" placeholder="Password"><p><button class="btn" id="loginBtn">Sign in</button></p><div id="msg"></div></div><div id="dash" class="hidden"><div class="card"><h2>Candidate submissions</h2><p class="muted">Pilot profiles and tester feedback.</p><button class="btn" id="refreshBtn">Refresh</button></div><div class="card"><table class="table"><thead><tr><th>Candidate</th><th>Position</th><th>Version</th><th>Date</th><th>Judgement</th><th>Reasoning</th><th>Accuracy feedback</th><th></th></tr></thead><tbody id="rows"></tbody></table></div><div id="detail"></div></div></div><script>
+const API='https://gazmnfynliigaxgydeqh.supabase.co/functions/v1/aurora-spectrum-api';
+let password='';
+const $=id=>document.getElementById(id);
+const e=s=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+async function load(){
+  password=$('pw').value||password;
+  let r=await fetch(API+'/admin',{headers:{'x-aurora-password':password}});
+  if(!r.ok){$('msg').innerHTML='<div class="error">Incorrect password.</div>';return}
+  let d=await r.json();$('login').classList.add('hidden');$('dash').classList.remove('hidden');
+  $('rows').innerHTML=d.map(x=>{
+    const f=x.payload?.pilotFeedback;
+    const acc=f?.accuracy?f.accuracy+'/5':'—';
+    return '<tr><td><b>'+e(x.candidate_name)+'</b><br><span class="muted">'+e(x.candidate_email||'')+'</span></td><td>'+e(x.position)+'</td><td>'+e(x.payload?.version||'')+'</td><td>'+new Date(x.completed_at).toLocaleString()+'</td><td>'+e(x.payload?.scores?.judgement??'—')+'%</td><td>'+e(x.payload?.scores?.reasoning??'—')+'%</td><td>'+acc+'</td><td><button onclick="view(\''+x.id+'\')">View</button></td></tr>';
+  }).join('');
+}
+async function view(id){
+  let r=await fetch(API+'/admin/'+id,{headers:{'x-aurora-password':password}});
+  let x=await r.json(),s=x.payload.scores||{},f=x.payload.pilotFeedback||null;
+  let feedback=f?'<div class="feedback"><h3>Pilot feedback</h3><p><b>Profile accuracy:</b> '+e(f.accuracy)+'/5</p><p><b>Least accurate result:</b> '+e(f.leastAccurate||'None / not sure')+'</p><p><b>Question issue:</b> '+e(f.questionIssue||'Not answered')+'</p><p><b>Comments:</b> '+e(f.comments||'No comments')+'</p></div>':'<div class="feedback"><b>No pilot feedback submitted yet.</b></div>';
+  $('detail').innerHTML='<div class="card"><h2>'+e(x.candidate_name)+'</h2><p>'+e(x.position)+' • '+e(x.payload.version||'')+'</p><h3>Personality Spectrum</h3>'+Object.entries(s.workstyle||{}).map(([k,v])=>'<div class="barrow"><div>'+e(k)+'</div><div class="bar"><div style="width:'+v+'%"></div></div><b>'+v+'%</b></div>').join('')+'<h3>Composite measures</h3><p><b>Judgement:</b> '+e(s.judgement)+'% &nbsp;&nbsp; <b>Reasoning:</b> '+e(s.reasoning)+'%</p>'+feedback+'</div>';
+  window.scrollTo(0,document.body.scrollHeight);
+}
+$('loginBtn').addEventListener('click',load);
+$('refreshBtn').addEventListener('click',load);
+</script></body></html>
