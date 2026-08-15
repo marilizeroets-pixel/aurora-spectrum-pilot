@@ -1,0 +1,338 @@
+[
+  {
+    "id": "P01",
+    "spectrum": "Connection & Expression",
+    "facet": "Social Engagement",
+    "a": "In a new group, I usually take a little time to listen and get a feel for people before becoming involved.",
+    "b": "In a new group, I usually start connecting with people fairly quickly."
+  },
+  {
+    "id": "P02",
+    "spectrum": "Connection & Expression",
+    "facet": "Social Engagement",
+    "a": "Even after a people-heavy day, I often still enjoy talking and interacting with people I like.",
+    "b": "After a people-heavy day, I usually want quiet time before I feel socially recharged."
+  },
+  {
+    "id": "P03",
+    "spectrum": "Connection & Expression",
+    "facet": "Social Engagement",
+    "a": "With unfamiliar people, I usually prefer a few deeper conversations.",
+    "b": "With unfamiliar people, I am comfortable moving between several conversations and contacts."
+  },
+  {
+    "id": "P04",
+    "spectrum": "Connection & Expression",
+    "facet": "Social Engagement",
+    "a": "When I am engaged in a group, I often become quite visible in the discussion.",
+    "b": "I am comfortable contributing without necessarily being especially visible."
+  },
+  {
+    "id": "P05",
+    "spectrum": "Connection & Expression",
+    "facet": "Assertive Expression",
+    "a": "I usually wait until there is a clear reason before putting a different view forward.",
+    "b": "If I see a better approach, I usually put it forward even when the current plan is workable."
+  },
+  {
+    "id": "P06",
+    "spectrum": "Connection & Expression",
+    "facet": "Assertive Expression",
+    "a": "If a senior person is confident but I see a risk, I am comfortable raising it during the discussion.",
+    "b": "If a senior person is confident but I see a risk, I prefer gathering my evidence and choosing the right moment before raising it."
+  },
+  {
+    "id": "P07",
+    "spectrum": "Connection & Expression",
+    "facet": "Assertive Expression",
+    "a": "If a request is inconvenient but manageable, I tend to accommodate it rather than push back.",
+    "b": "If a request creates a real concern, I usually state the boundary or negotiate it directly."
+  },
+  {
+    "id": "P08",
+    "spectrum": "Connection & Expression",
+    "facet": "Assertive Expression",
+    "a": "When tension appears with someone, I usually prefer addressing the issue fairly soon.",
+    "b": "When tension appears with someone, I usually need time to think before discussing it."
+  },
+  {
+    "id": "P09",
+    "spectrum": "Drive & Autonomy",
+    "facet": "Initiative & Drive",
+    "a": "External deadlines and visible milestones help me keep long projects moving at the right pace.",
+    "b": "I usually create my own internal pace even when nobody is checking progress."
+  },
+  {
+    "id": "P10",
+    "spectrum": "Drive & Autonomy",
+    "facet": "Initiative & Drive",
+    "a": "I work best when I can see regular progress or milestones along the way.",
+    "b": "I can keep pushing steadily even when progress is slow and there is little feedback."
+  },
+  {
+    "id": "P11",
+    "spectrum": "Drive & Autonomy",
+    "facet": "Initiative & Drive",
+    "a": "When several important things compete for attention, I narrow my focus to protect quality.",
+    "b": "When several important things compete for attention, I naturally increase pace and try to keep several moving."
+  },
+  {
+    "id": "P12",
+    "spectrum": "Drive & Autonomy",
+    "facet": "Initiative & Drive",
+    "a": "For a large unfamiliar task, I like enough structure in place before I really begin.",
+    "b": "For a large unfamiliar task, I am comfortable starting with the next clear action and developing the structure as I go."
+  },
+  {
+    "id": "P13",
+    "spectrum": "Drive & Autonomy",
+    "facet": "Decision Autonomy",
+    "a": "When the outcome is clear but the method is not, I prefer briefly confirming the approach before starting.",
+    "b": "When the outcome is clear but the method is not, I am comfortable choosing an approach and getting started."
+  },
+  {
+    "id": "P14",
+    "spectrum": "Drive & Autonomy",
+    "facet": "Decision Autonomy",
+    "a": "Once I believe I have enough information, I am comfortable committing without checking my decision with someone else.",
+    "b": "Before an important commitment, I value checking my thinking with someone I trust."
+  },
+  {
+    "id": "P15",
+    "spectrum": "Drive & Autonomy",
+    "facet": "Decision Autonomy",
+    "a": "After an important decision, I sometimes revisit it to make sure I have not missed something.",
+    "b": "Unless new information appears, I usually stop reconsidering a decision once I have made it."
+  },
+  {
+    "id": "P16",
+    "spectrum": "Drive & Autonomy",
+    "facet": "Decision Autonomy",
+    "a": "For a small reversible decision near the edge of my authority, I am comfortable using judgement and updating the relevant person afterwards.",
+    "b": "For a small reversible decision near the edge of my authority, I would rather check before acting."
+  },
+  {
+    "id": "P17",
+    "spectrum": "Order & Execution",
+    "facet": "Orderliness & Systems",
+    "a": "I can work effectively with files and information arranged in a way that makes sense mainly to me.",
+    "b": "I prefer files and information arranged consistently enough that another person could find them without me."
+  },
+  {
+    "id": "P18",
+    "spectrum": "Order & Execution",
+    "facet": "Orderliness & Systems",
+    "a": "During busy periods, I prefer maintaining one reliable system for tasks, deadlines and follow-ups.",
+    "b": "During busy periods, I am comfortable using changing notes and reminders as priorities move."
+  },
+  {
+    "id": "P19",
+    "spectrum": "Order & Execution",
+    "facet": "Orderliness & Systems",
+    "a": "Visual clutter does not bother me much if I know where everything is.",
+    "b": "I find it easier to work when my physical or digital environment is clearly organised."
+  },
+  {
+    "id": "P20",
+    "spectrum": "Order & Execution",
+    "facet": "Orderliness & Systems",
+    "a": "Even with a familiar process, I prefer a checklist, control or repeatable sequence for important steps.",
+    "b": "If a repeated process is familiar, I am comfortable relying mainly on experience and judgement."
+  },
+  {
+    "id": "P21",
+    "spectrum": "Order & Execution",
+    "facet": "Follow-Through & Accountability",
+    "a": "Before sending important work, I focus my checking on the parts most likely to cause problems.",
+    "b": "Before sending important work, I prefer a consistent checking process even for areas unlikely to be wrong."
+  },
+  {
+    "id": "P22",
+    "spectrum": "Order & Execution",
+    "facet": "Follow-Through & Accountability",
+    "a": "Once the main outcome is achieved, I prefer closing the associated follow-ups while the matter is still active.",
+    "b": "Once the main outcome is achieved, I am comfortable batching smaller follow-ups for later."
+  },
+  {
+    "id": "P23",
+    "spectrum": "Order & Execution",
+    "facet": "Follow-Through & Accountability",
+    "a": "If I discover that my work contributed to a problem, I prefer correcting as much as possible before drawing attention to it.",
+    "b": "If I discover that my work contributed to a problem, I prefer making the impact and corrective action visible early."
+  },
+  {
+    "id": "P24",
+    "spectrum": "Order & Execution",
+    "facet": "Follow-Through & Accountability",
+    "a": "When a deadline suddenly moves forward, I reorganise the remaining steps so the essential work and necessary close-out stay controlled.",
+    "b": "When a deadline suddenly moves forward, I concentrate first on the essential outcome and let secondary administration catch up afterwards."
+  },
+  {
+    "id": "P25",
+    "spectrum": "Thinking & Adaptability",
+    "facet": "Evidence Orientation",
+    "a": "When two explanations seem possible, practical experience usually tells me where to begin.",
+    "b": "When two explanations seem possible, I prefer checking what evidence would distinguish between them."
+  },
+  {
+    "id": "P26",
+    "spectrum": "Thinking & Adaptability",
+    "facet": "Evidence Orientation",
+    "a": "When strong new information challenges my first conclusion, I am comfortable changing direction fairly quickly.",
+    "b": "When strong new information challenges my first conclusion, I prefer testing the new information before changing position."
+  },
+  {
+    "id": "P27",
+    "spectrum": "Thinking & Adaptability",
+    "facet": "Evidence Orientation",
+    "a": "When records conflict with what experienced people believe happened, I give considerable weight to their experience.",
+    "b": "When records conflict with what experienced people believe happened, I usually investigate the records and assumptions before deciding."
+  },
+  {
+    "id": "P28",
+    "spectrum": "Thinking & Adaptability",
+    "facet": "Evidence Orientation",
+    "a": "I usually prefer solving the immediate practical problem before exploring the wider pattern.",
+    "b": "I often become interested in why the problem happened and whether it points to a wider pattern."
+  },
+  {
+    "id": "P29",
+    "spectrum": "Thinking & Adaptability",
+    "facet": "Adaptability & Curiosity",
+    "a": "If a method is working reliably, I prefer keeping it until there is a clear reason to change.",
+    "b": "Even when a method works, I tend to notice opportunities to test a better approach."
+  },
+  {
+    "id": "P30",
+    "spectrum": "Thinking & Adaptability",
+    "facet": "Adaptability & Curiosity",
+    "a": "I learn unfamiliar systems best by exploring them and working out the structure as I go.",
+    "b": "I learn unfamiliar systems best once I understand the rules and structure first."
+  },
+  {
+    "id": "P31",
+    "spectrum": "Thinking & Adaptability",
+    "facet": "Adaptability & Curiosity",
+    "a": "Sudden changes are easier when I can first work out a revised plan.",
+    "b": "Sudden changes are easier when I start adapting immediately and refine the plan while moving."
+  },
+  {
+    "id": "P32",
+    "spectrum": "Thinking & Adaptability",
+    "facet": "Adaptability & Curiosity",
+    "a": "Even when something has worked for a long time, I can become interested in testing whether a better method now exists.",
+    "b": "When something has worked for a long time, that history is meaningful evidence for keeping it."
+  },
+  {
+    "id": "P33",
+    "spectrum": "Human Awareness & Conflict",
+    "facet": "Perspective & Human Awareness",
+    "a": "When a decision is necessary, I focus first on getting the outcome right and then manage its interpersonal impact.",
+    "b": "When a decision is necessary, I naturally consider the outcome and interpersonal impact together."
+  },
+  {
+    "id": "P34",
+    "spectrum": "Human Awareness & Conflict",
+    "facet": "Perspective & Human Awareness",
+    "a": "When someone is upset about a work issue, I usually begin by understanding their perspective before solving it.",
+    "b": "When someone is upset about a work issue, I usually begin by clarifying the problem that must be solved."
+  },
+  {
+    "id": "P35",
+    "spectrum": "Human Awareness & Conflict",
+    "facet": "Perspective & Human Awareness",
+    "a": "I value communicating consistently so everyone receives essentially the same message.",
+    "b": "I naturally adjust how I communicate according to the person receiving the message."
+  },
+  {
+    "id": "P36",
+    "spectrum": "Human Awareness & Conflict",
+    "facet": "Perspective & Human Awareness",
+    "a": "When a colleague repeatedly struggles, I tend to first become curious about what is driving the difficulty.",
+    "b": "When a colleague repeatedly struggles, I tend to focus first on what structure or performance change is required."
+  },
+  {
+    "id": "P37",
+    "spectrum": "Human Awareness & Conflict",
+    "facet": "Conflict Navigation",
+    "a": "In a disagreement, some issues resolve better after everyone has had time to cool down.",
+    "b": "In a disagreement, I usually prefer bringing the issue into the open before it has time to grow."
+  },
+  {
+    "id": "P38",
+    "spectrum": "Human Awareness & Conflict",
+    "facet": "Conflict Navigation",
+    "a": "If a disagreement can be worked around, I may leave it rather than risk unnecessary tension.",
+    "b": "If an issue is likely to repeat, I prefer discussing it even if the conversation is uncomfortable."
+  },
+  {
+    "id": "P39",
+    "spectrum": "Human Awareness & Conflict",
+    "facet": "Conflict Navigation",
+    "a": "If preserving a relationship requires accepting an outcome that is still workable, I can often do that.",
+    "b": "If an issue is important enough, I am comfortable risking temporary tension to resolve it properly."
+  },
+  {
+    "id": "P40",
+    "spectrum": "Human Awareness & Conflict",
+    "facet": "Conflict Navigation",
+    "a": "In conflict, I prefer a calm, relational framing that makes it easier for the other person to stay engaged.",
+    "b": "In conflict, I prefer a concise, direct framing so the issue is not diluted."
+  },
+  {
+    "id": "P41",
+    "spectrum": "Emotional Regulation & Recovery",
+    "facet": "Emotional Reactivity / Steadiness",
+    "a": "When I am frustrated, people who know me can usually see or hear it.",
+    "b": "Even when I am frustrated, my outward manner usually changes relatively little."
+  },
+  {
+    "id": "P42",
+    "spectrum": "Emotional Regulation & Recovery",
+    "facet": "Emotional Reactivity / Steadiness",
+    "a": "Under uncertainty, I usually focus more strongly on the next thing I can control.",
+    "b": "Under uncertainty, I naturally think through several ways things could go wrong."
+  },
+  {
+    "id": "P43",
+    "spectrum": "Emotional Regulation & Recovery",
+    "facet": "Emotional Reactivity / Steadiness",
+    "a": "When pressure builds, I often feel the emotional intensity even if I continue functioning.",
+    "b": "When pressure builds, my internal emotional state generally stays relatively steady."
+  },
+  {
+    "id": "P44",
+    "spectrum": "Emotional Regulation & Recovery",
+    "facet": "Emotional Reactivity / Steadiness",
+    "a": "When several stressful things happen together, I am usually able to compartmentalise them and deal with them one at a time.",
+    "b": "When several stressful things happen together, I tend to carry some of that tension between tasks."
+  },
+  {
+    "id": "P45",
+    "spectrum": "Emotional Regulation & Recovery",
+    "facet": "Recovery & Resilience",
+    "a": "After a tense interaction, I usually need some processing time before my attention is completely elsewhere.",
+    "b": "After a tense interaction, I can usually redirect my attention to the next task fairly quickly."
+  },
+  {
+    "id": "P46",
+    "spectrum": "Emotional Regulation & Recovery",
+    "facet": "Recovery & Resilience",
+    "a": "I usually extract what is useful from criticism and mentally move on fairly quickly.",
+    "b": "Criticism from someone whose opinion matters can stay on my mind for a while."
+  },
+  {
+    "id": "P47",
+    "spectrum": "Emotional Regulation & Recovery",
+    "facet": "Recovery & Resilience",
+    "a": "After conflict, I usually recover best by getting some space before continuing normally.",
+    "b": "After conflict, I can usually return to normal interaction without needing much space first."
+  },
+  {
+    "id": "P48",
+    "spectrum": "Emotional Regulation & Recovery",
+    "facet": "Recovery & Resilience",
+    "a": "Once I understand how to correct a significant mistake, my confidence usually recovers quite quickly.",
+    "b": "A significant mistake can affect my confidence for a while even when I know how to correct it."
+  }
+]
