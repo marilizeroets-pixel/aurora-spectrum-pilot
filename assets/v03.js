@@ -1,0 +1,170 @@
+const API='https://gazmnfynliigaxgydeqh.supabase.co/functions/v1/aurora-spectrum-api';
+const CFG_BASE='./config/';
+const FB='https://gazmnfynliigaxgydeqh.supabase.co/functions/v1/aurora-spectrum-feedback';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let config=null,pages=[],idx=0,started=0,submissionId='',results=null;
+const ans={personality:{},judgement:{},reasoning:{},workPreference:{}};
+const orderMap={};
+function err(id,msg){const el=$(id);el.textContent=msg||'';el.classList.toggle('hidden',!msg)}
+function shuffled(a){const x=[...a];for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x}
+
+async function loadCfg(){
+  try{
+    const [p,j,r,w]=await Promise.all([
+      fetch(CFG_BASE+'personality-v03.json',{cache:'no-store'}),
+      fetch(CFG_BASE+'judgement-v03.json',{cache:'no-store'}),
+      fetch(CFG_BASE+'reasoning-v03.json',{cache:'no-store'}),
+      fetch(CFG_BASE+'work-preference-v03.json',{cache:'no-store'})
+    ]);
+    if(!p.ok||!j.ok||!r.ok||!w.ok)throw new Error('config');
+    config={assessmentVersion:'0.3-research-draft',resultsModelVersion:'core6-v0.3-draft',personality:await p.json(),judgement:await j.json(),reasoning:await r.json(),workPreference:await w.json()};
+  }catch(e){err('startError','Aurora could not load the assessment. Please refresh and try again.');}
+}
+
+function makePages(){
+  pages=[
+    ...config.personality.map(q=>({type:'personality',q})),
+    ...config.judgement.map(q=>({type:'judgement',q})),
+    ...config.reasoning.map(q=>({type:'reasoning',q})),
+    ...Object.entries(config.workPreference).map(([id,q])=>({type:'workPreference',q:{id,...q}}))
+  ];
+  config.personality.forEach(q=>orderMap[q.id]=Math.random()<.5?['A','B']:['B','A']);
+  config.judgement.forEach(q=>orderMap[q.id]=shuffled(Object.keys(q.options)));
+  config.reasoning.forEach(q=>orderMap[q.id]=shuffled(Object.keys(q.options)));
+}
+
+async function begin(){
+  if(!config)await loadCfg();if(!config)return;
+  const name=$('fullName').value.trim(),position=$('candidatePosition').value.trim();
+  if(!name||!position||!$('consentBox').checked){err('startError','Please enter your name and position and tick the consent box.');return}
+  err('startError','');makePages();started=Date.now();$('startCard').classList.add('hidden');$('testCard').classList.remove('hidden');render();
+}
+
+function sectionText(type){
+  return type==='personality'?'PART 1 — YOUR NATURAL STYLE':type==='judgement'?'PART 2 — APPLIED JUDGEMENT':type==='reasoning'?'PART 3 — WORKPLACE REASONING':'PART 4 — WORK PREFERENCE LENS';
+}
+
+function personalityHtml(q){
+  const ord=orderMap[q.id],left=ord[0],right=ord[1];
+  const text={A:q.a,B:q.b};
+  const current=ans.personality[q.id];
+  const val=(side,intensity)=>`${side}:${intensity}`;
+  const checked=(side,intensity)=>current&&current.preferred===side&&current.intensity===intensity?'checked':'';
+  return `<div class="sectionHint">Read both statements. Neither is the “correct” answer — choose which side is more like you and how strongly.</div>
+    <div class="pair">
+      <div class="statement"><b>Statement 1</b><p>${esc(text[left])}</p></div>
+      <div class="statement"><b>Statement 2</b><p>${esc(text[right])}</p></div>
+    </div>
+    <div class="pairChoices">
+      <label class="choice"><input type="radio" name="response" value="${val(left,'strong')}" ${checked(left,'strong')}> Much more like Statement 1</label>
+      <label class="choice"><input type="radio" name="response" value="${val(left,'slight')}" ${checked(left,'slight')}> Slightly more like Statement 1</label>
+      <label class="choice"><input type="radio" name="response" value="${val(right,'slight')}" ${checked(right,'slight')}> Slightly more like Statement 2</label>
+      <label class="choice"><input type="radio" name="response" value="${val(right,'strong')}" ${checked(right,'strong')}> Much more like Statement 2</label>
+    </div>`;
+}
+
+function mcqHtml(q,type){
+  const current=ans[type][q.id],keys=orderMap[q.id];
+  const prompt=type==='judgement'?`<div class="q">${esc(q.scenario)}</div>`:`<div class="q" style="white-space:pre-line">${esc(q.prompt)}</div>`;
+  return `${prompt}<div class="options">${keys.map(k=>`<label class="option"><input type="radio" name="response" value="${k}" ${current===k?'checked':''}> <span>${esc(q.options[k])}</span></label>`).join('')}</div>`;
+}
+
+function workPrefHtml(q){
+  let options=q.options;
+  if(q.excludeSelectionFrom){const excluded=ans.workPreference[q.excludeSelectionFrom];if(excluded)options=options.filter(o=>o.id!==excluded)}
+  const current=ans.workPreference[q.id]||'';
+  return `<div class="q">${esc(q.prompt)}</div><select id="workSelect"><option value="">Select one</option>${options.map(o=>`<option value="${esc(o.id)}" ${current===o.id?'selected':''}>${esc(o.label)} — ${esc(o.description)}</option>`).join('')}</select><div class="selectDesc">This preference is used for career exploration only and does not change your six Spectrum scores.</div>`;
+}
+
+function render(){
+  const p=pages[idx];
+  $('progressBar').style.width=((idx+1)/pages.length*100)+'%';
+  $('stepLabel').textContent=`Question ${idx+1} of ${pages.length}`;
+  $('sectionLabel').textContent=sectionText(p.type);
+  $('questionContent').innerHTML=p.type==='personality'?personalityHtml(p.q):p.type==='judgement'?mcqHtml(p.q,'judgement'):p.type==='reasoning'?mcqHtml(p.q,'reasoning'):workPrefHtml(p.q);
+  $('nextBtn').textContent=idx===pages.length-1?'Submit assessment':'Continue';
+  $('backBtn').style.visibility=idx?'visible':'hidden';err('questionError','');
+}
+
+function saveCurrent(requireAnswer=true){
+  const p=pages[idx];
+  if(p.type==='workPreference'){
+    const sel=$('workSelect');const value=sel?sel.value:'';
+    if(!value){if(requireAnswer)err('questionError','Please select an option before continuing.');return false}
+    if(p.q.id==='W02'&&value===ans.workPreference.W01){if(requireAnswer)err('questionError','Please choose a different secondary preference.');return false}
+    ans.workPreference[p.q.id]=value;return true;
+  }
+  const r=document.querySelector('input[name=response]:checked');
+  if(!r){if(requireAnswer)err('questionError','Please answer this question before continuing.');return false}
+  if(p.type==='personality'){
+    const [preferred,intensity]=r.value.split(':');ans.personality[p.q.id]={preferred,intensity};
+  }else ans[p.type][p.q.id]=r.value;
+  return true;
+}
+
+async function next(){
+  if(!saveCurrent(true))return;
+  if(idx<pages.length-1){idx++;render();return}
+  const btn=$('nextBtn');btn.disabled=true;btn.textContent='Scoring your profile…';err('questionError','');
+  try{
+    const payload={
+      version:config.assessmentVersion,
+      resultsModelVersion:config.resultsModelVersion,
+      candidate:{name:$('fullName').value.trim(),email:$('candidateEmail').value.trim(),position:$('candidatePosition').value.trim(),reference:$('candidateReference').value.trim()},
+      consent:true,durationSeconds:Math.round((Date.now()-started)/1000),answers:ans
+    };
+    const r=await fetch(API+'/submit',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});
+    const d=await r.json();if(!r.ok||!d.scores)throw new Error(d.error||'submit');
+    submissionId=d.id;results=d.scores;$('testCard').classList.add('hidden');$('resultsWrap').classList.remove('hidden');showResults(results);window.scrollTo(0,0);
+  }catch(e){err('questionError','We could not submit and score your assessment. Please try again.');btn.disabled=false;btn.textContent='Submit assessment'}
+}
+
+function goBack(){saveCurrent(false);if(idx){idx--;render()}}
+
+function profileSummary(spectra){
+  const arr=Object.values(spectra).filter(x=>typeof x.score==='number').sort((a,b)=>b.score-a.score);
+  if(arr.length<3)return 'Your Aurora profile is ready below.';
+  const a=arr[0],b=arr[1],low=arr[arr.length-1];
+  return `Your strongest current tendencies sit in <b>${esc(a.name)}</b> and <b>${esc(b.name)}</b>. ${esc(a.strength)} ${esc(b.strength)} Relative to the rest of your profile, <b>${esc(low.name)}</b> is less pronounced, which adds an important counterbalance to how you naturally operate.`;
+}
+
+function spectrumCard(s){
+  const facets=s.facets||[];let split='';
+  if(s.split!=='consistent'&&facets.length===2){const hi=[...facets].sort((a,b)=>b.score-a.score)[0],lo=[...facets].sort((a,b)=>a.score-b.score)[0];split=`<div class="split"><b>Mixed pattern:</b> ${esc(hi.name)} (${hi.score}%) is more pronounced than ${esc(lo.name)} (${lo.score}%). Read the two facets separately rather than treating the headline score as the whole story.</div>`}
+  return `<div class="spectrumCard">
+    <div class="spectrumTop"><div><div class="eyebrow">${esc(s.short)}</div><h3>${esc(s.name)}</h3><div class="bandLabel">${esc(s.band.label)}</div></div><div class="score">${s.score}/100</div></div>
+    <div class="bar"><div style="width:${s.score}%"></div></div><p class="muted">${esc(s.band.description)}</p>
+    ${facets.map(f=>`<div class="facetRow"><div><b>${esc(f.name)}</b><div class="miniBar"><div style="width:${f.score}%"></div></div></div><b>${f.score}%</b></div>`).join('')}
+    ${split}
+    <h4>Why Aurora placed you here</h4><ul class="why">${(s.why||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+    <div class="twoCol"><div class="insight"><b>Where this can help</b><br>${esc(s.strength)}</div><div class="insight"><b>Watch when overused</b><br>${esc(s.watch)}</div></div>
+  </div>`;
+}
+
+function capCard(title,obj){
+  const domains=Object.entries(obj.domains||{});
+  return `<div class="capCard"><div class="eyebrow">${esc(title)}</div><div class="score">${obj.score}%</div><h3>${esc(obj.band)}</h3>${domains.map(([name,d])=>`<div class="domainRow"><div><b>${esc(name)}</b><div class="miniBar"><div style="width:${d.score}%"></div></div></div><b>${d.score}%</b></div>`).join('')}</div>`;
+}
+
+function showResults(s){
+  $('resultName').textContent=$('fullName').value.trim()+' — Your Profile';
+  $('profileSummary').innerHTML=profileSummary(s.personality.spectra);
+  $('spectrumResults').innerHTML=Object.values(s.personality.spectra).map(spectrumCard).join('');
+  $('capabilityResults').innerHTML=capCard('Applied Judgement',s.judgement)+capCard('Workplace Reasoning',s.reasoning);
+  const c=s.career||{};
+  const prefs=[['Primary work drive',c.primary],['Secondary work drive',c.secondary],['Preferred environment',c.environment],['What matters most',c.motivator]];
+  $('preferenceResults').innerHTML=prefs.map(([k,v])=>`<div class="prefItem"><span class="eyebrow">${esc(k)}</span><b>${esc(v||'—')}</b></div>`).join('');
+  const fam=c.careerFamilies||[];
+  $('careerResults').innerHTML=fam.length?fam.map(x=>`<div class="careerCard"><div class="careerHead"><h3>${esc(x.name)}</h3><span class="pill">${esc(x.label)}</span></div><ul>${(x.reasons||[]).slice(0,5).map(r=>`<li>${esc(r)}</li>`).join('')}</ul><div class="examples"><b>Examples to explore:</b> ${esc((x.examples||[]).join(' • '))}</div></div>`).join(''):'<div class="note">Your selected preferences did not create a strong enough career-family pattern for this draft engine. Treat that as useful research feedback rather than forcing a recommendation.</div>';
+  const opts=['','Connection & Expression','Drive & Autonomy','Order & Execution','Thinking & Adaptability','Human Awareness & Conflict','Emotional Regulation & Recovery','Applied Judgement','Workplace Reasoning','Work Preference Lens / Career Compass'];
+  $('leastAccurate').innerHTML=opts.map((x,i)=>`<option value="${esc(x)}">${i?esc(x):'None / not sure'}</option>`).join('');
+}
+
+async function feedback(){
+  const rating=document.querySelector('input[name=accuracy]:checked');if(!rating){err('feedbackError','Please rate how accurate the profile felt.');return}
+  const f={accuracy:+rating.value,leastAccurate:$('leastAccurate').value,questionIssue:$('questionIssue').value,comments:$('feedbackComments').value.trim()};
+  try{const r=await fetch(FB,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({submissionId,feedback:f})});if(!r.ok)throw new Error();$('feedbackThanks').classList.remove('hidden');$('feedbackBtn').classList.add('hidden');err('feedbackError','')}catch(e){err('feedbackError','Your feedback could not be saved. Please try again.')}
+}
+
+$('beginBtn').addEventListener('click',begin);$('nextBtn').addEventListener('click',next);$('backBtn').addEventListener('click',goBack);$('feedbackBtn').addEventListener('click',feedback);$('printBtn').addEventListener('click',()=>window.print());loadCfg();
