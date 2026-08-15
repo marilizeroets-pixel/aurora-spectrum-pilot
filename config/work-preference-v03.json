@@ -1,0 +1,57 @@
+{
+  "W01": {
+    "prompt": "When I am doing my best work, I feel most energised when I can…",
+    "type": "select",
+    "options": [
+      {"id":"lead","label":"Lead & Influence","description":"Guide people, make decisions, influence direction and take responsibility for outcomes."},
+      {"id":"create","label":"Create & Innovate","description":"Develop ideas, design something new, experiment and turn imagination into something practical."},
+      {"id":"analyse","label":"Analyse & Solve","description":"Investigate information, understand difficult problems, identify patterns and find answers."},
+      {"id":"organise","label":"Organise & Deliver","description":"Create structure, coordinate details, keep things on track and make sure work is completed properly."},
+      {"id":"help","label":"Help & Develop","description":"Support people, teach, guide, solve people-related problems and contribute to growth."},
+      {"id":"improve","label":"Build & Improve","description":"Fix things, improve systems, make processes work better and see a measurable result."},
+      {"id":"connect","label":"Connect & Persuade","description":"Build relationships, negotiate, sell ideas and win support."},
+      {"id":"master","label":"Work Independently & Master","description":"Develop deep expertise, concentrate independently and become exceptionally good at a specialised area."}
+    ]
+  },
+  "W02": {
+    "prompt": "If you could choose one more type of work that energises you, which would come next?",
+    "type": "select",
+    "options": [
+      {"id":"lead","label":"Lead & Influence","description":"Guide people, make decisions, influence direction and take responsibility for outcomes."},
+      {"id":"create","label":"Create & Innovate","description":"Develop ideas, design something new, experiment and turn imagination into something practical."},
+      {"id":"analyse","label":"Analyse & Solve","description":"Investigate information, understand difficult problems, identify patterns and find answers."},
+      {"id":"organise","label":"Organise & Deliver","description":"Create structure, coordinate details, keep things on track and make sure work is completed properly."},
+      {"id":"help","label":"Help & Develop","description":"Support people, teach, guide, solve people-related problems and contribute to growth."},
+      {"id":"improve","label":"Build & Improve","description":"Fix things, improve systems, make processes work better and see a measurable result."},
+      {"id":"connect","label":"Connect & Persuade","description":"Build relationships, negotiate, sell ideas and win support."},
+      {"id":"master","label":"Work Independently & Master","description":"Develop deep expertise, concentrate independently and become exceptionally good at a specialised area."}
+    ],
+    "excludeSelectionFrom": "W01"
+  },
+  "W03": {
+    "prompt": "I generally do my best work in an environment that is…",
+    "type": "select",
+    "options": [
+      {"id":"structured","label":"Structured & Predictable","description":"Clear processes, responsibilities and expectations."},
+      {"id":"fast","label":"Fast-Moving & Varied","description":"Changing priorities, different challenges and lots happening."},
+      {"id":"independent","label":"Independent & Focused","description":"Freedom to concentrate and manage your own work."},
+      {"id":"collaborative","label":"Collaborative & People-Centred","description":"Frequent interaction, teamwork and shared problem-solving."},
+      {"id":"competitive","label":"Competitive & Results-Driven","description":"Targets, achievement, measurable outcomes and challenge."},
+      {"id":"creative","label":"Creative & Exploratory","description":"Freedom to experiment, develop ideas and try new approaches."}
+    ]
+  },
+  "W04": {
+    "prompt": "What matters most to you in satisfying work?",
+    "type": "select",
+    "options": [
+      {"id":"achievement","label":"Achievement","description":"Accomplishing difficult or meaningful goals."},
+      {"id":"autonomy","label":"Autonomy","description":"Freedom and control over how you work."},
+      {"id":"security","label":"Security","description":"Stability, predictability and dependable conditions."},
+      {"id":"growth","label":"Growth","description":"Continually learning and progressing."},
+      {"id":"impact","label":"Impact","description":"Knowing your work meaningfully affects people or outcomes."},
+      {"id":"recognition","label":"Recognition","description":"Having strong performance noticed and valued."},
+      {"id":"belonging","label":"Belonging","description":"Being part of a strong team or community."},
+      {"id":"variety","label":"Variety","description":"Change, stimulation and different challenges."}
+    ]
+  }
+}
