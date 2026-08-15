@@ -1,0 +1,134 @@
+[
+  {
+    "id": "J01",
+    "domain": "Risk & Prioritisation",
+    "scenario": "At 15:20 you discover that a client-facing calculation sent earlier today contains an error. The financial impact appears small, but the client may already have used the figure. Your manager is in a meeting until 16:00 and you also have a separate deadline at 16:30.",
+    "options": {
+      "A": "Correct the calculation immediately, resend it with a concise correction, and brief your manager afterwards.",
+      "B": "First establish whether the client has acted on the figure, then decide how urgently a correction needs to be communicated.",
+      "C": "Prepare the corrected calculation and a clear summary of the impact, alert the appropriate person that a correction is required, and continue the other deadline while the correction is coordinated.",
+      "D": "Call the client immediately, explain that there may be an issue, and ask them not to use the figure until you have completed the correction."
+    }
+  },
+  {
+    "id": "J02",
+    "domain": "Risk & Prioritisation",
+    "scenario": "Two senior stakeholders each give you work they describe as urgent. You can complete only one to the required standard before the end of the day, and neither person is aware of the other request.",
+    "options": {
+      "A": "Do the request from the more senior person first because their priority should carry more weight.",
+      "B": "Start both and work as quickly as possible, only raising the conflict if one clearly cannot be finished.",
+      "C": "Clarify the timing and consequence of delay for both pieces of work, propose a realistic sequence, and make the priority conflict visible early.",
+      "D": "Choose the task with the nearest stated deadline, complete it, and tell the other stakeholder afterwards why their work moved."
+    }
+  },
+  {
+    "id": "J03",
+    "domain": "Communication & People Judgement",
+    "scenario": "A capable colleague has made the same small administrative error several times over the past month. You have been fixing it because each error is quick to correct, but the pattern is now affecting your own time.",
+    "options": {
+      "A": "Keep correcting it for now but start documenting the pattern so you have evidence if it becomes serious.",
+      "B": "Escalate it formally because repeated errors show that informal correction has not worked.",
+      "C": "Discuss the pattern privately, ask what is contributing to it, agree a practical control or checking step, and review whether the error stops.",
+      "D": "Take over that part of the process temporarily so that the errors cannot continue while the workload is busy."
+    }
+  },
+  {
+    "id": "J04",
+    "domain": "Accountability & Integrity",
+    "scenario": "A client asks you to change the wording of an accurate report because they feel one sentence sounds too alarming. Their suggested wording is technically true but would make the underlying risk much less obvious.",
+    "options": {
+      "A": "Use the client’s wording because the facts have not actually been changed.",
+      "B": "Refuse the request and keep the original sentence exactly as it is.",
+      "C": "Rewrite the sentence in neutral, clear language that does not overstate the risk but still makes the material issue visible, and explain the boundary to the client.",
+      "D": "Do not change anything until a manager decides which wording should be used."
+    }
+  },
+  {
+    "id": "J05",
+    "domain": "Ambiguity & Escalation",
+    "scenario": "You are given an important task with incomplete instructions. The intended outcome is clear, but two parts of the process are ambiguous and the person who assigned it will be unavailable for several hours.",
+    "options": {
+      "A": "Wait until the person is available because important work should not be based on assumptions.",
+      "B": "Proceed with the interpretation that seems most likely and fix anything later if your assumption was wrong.",
+      "C": "Separate what is clear from what is uncertain, complete the reversible parts, document the assumptions that would affect the outcome, and seek appropriate clarification for those points.",
+      "D": "Ask several colleagues what they think and follow whichever interpretation most people support."
+    }
+  },
+  {
+    "id": "J06",
+    "domain": "Risk & Prioritisation",
+    "scenario": "A core system goes down 45 minutes before a time-sensitive submission. IT cannot yet give a recovery time. A manual workaround exists, but it creates extra reconciliation work afterwards.",
+    "options": {
+      "A": "Keep retrying the system for as long as possible because the manual route creates unnecessary follow-up work.",
+      "B": "Notify the affected stakeholders early, use the controlled manual workaround where possible, and record what must be reconciled once the system returns.",
+      "C": "Send whatever can be produced on time, even if some fields are incomplete, and correct the missing information later.",
+      "D": "Log the issue with IT and wait for their guidance because they own the system risk."
+    }
+  },
+  {
+    "id": "J07",
+    "domain": "Communication & People Judgement",
+    "scenario": "A high-performing team member gets strong results but is increasingly dismissive when less experienced colleagues ask questions. No formal complaint has been made, but people are starting to avoid approaching them.",
+    "options": {
+      "A": "Leave it for now because their performance is strong and no one has formally complained.",
+      "B": "Address it in the next team meeting so everyone understands the expected behaviour.",
+      "C": "Speak privately, describe the specific pattern and its impact, clarify the expectation, and monitor whether the behaviour changes.",
+      "D": "Redirect junior staff to other people so the tension does not affect delivery."
+    }
+  },
+  {
+    "id": "J08",
+    "domain": "Accountability & Integrity",
+    "scenario": "You realise that you missed a commitment you made to a client. The client has not followed up yet, and you could probably complete the work later today.",
+    "options": {
+      "A": "Finish it as quickly as possible and send it once complete without drawing extra attention to the delay.",
+      "B": "Tell your manager what happened and ask whether the client should be contacted.",
+      "C": "Contact the client proactively, acknowledge the missed timing, give a realistic revised commitment, and then make sure the work is delivered as promised.",
+      "D": "Send a partial version immediately so that the client receives something before they notice the delay."
+    }
+  },
+  {
+    "id": "J09",
+    "domain": "Communication & People Judgement",
+    "scenario": "An employee asks for an exception to a normal process because of a genuine personal difficulty. The rule allows some management discretion, but inconsistent exceptions could create fairness concerns.",
+    "options": {
+      "A": "Apply the normal rule exactly as written so that everyone is treated the same.",
+      "B": "Grant the exception because the circumstances are genuine and supporting the person should come first.",
+      "C": "Check what discretion the rule allows, apply a consistent decision principle, document the reason, and consider whether the same principle could fairly apply to someone in similar circumstances.",
+      "D": "Refer the request upward because any exception creates too much risk for an individual decision."
+    }
+  },
+  {
+    "id": "J10",
+    "domain": "Ambiguity & Escalation",
+    "scenario": "Shortly before a leadership meeting, you notice an unusual value in a report. It may be a genuine outlier or a data error. Removing it changes the overall conclusion slightly, but there is not enough time for a full investigation.",
+    "options": {
+      "A": "Remove the value because an unexplained outlier could mislead the meeting.",
+      "B": "Leave the value in and add a note that it appears unusual and may require follow-up.",
+      "C": "Do the quickest reasonable source and calculation checks; if it remains unresolved, show the value but clearly flag the uncertainty and explain whether it materially changes the conclusion.",
+      "D": "Delay the entire report until the value can be fully verified."
+    }
+  },
+  {
+    "id": "J11",
+    "domain": "Accountability & Integrity",
+    "scenario": "A colleague tells you they made a mistake that may affect a client financially and asks you to help fix it before either of you tells a manager. The size of the impact is not yet clear.",
+    "options": {
+      "A": "Help establish and correct the issue first, then decide whether escalation is still necessary once the impact is known.",
+      "B": "Report the colleague immediately because delaying disclosure could look like concealment.",
+      "C": "Quickly establish the likely impact, preserve the relevant information, make sure the appropriate person is informed while correction begins, and keep the colleague involved in resolving it.",
+      "D": "Tell the colleague it is their mistake and they should decide how to handle it."
+    }
+  },
+  {
+    "id": "J12",
+    "domain": "Ambiguity & Escalation",
+    "scenario": "A new process has been introduced to improve quality. The first two weeks show slower turnaround and several employees want to revert to the old process, but error rates have also fallen slightly.",
+    "options": {
+      "A": "Revert to the old process until a better version of the new one can be designed.",
+      "B": "Keep enforcing the new process without adjustment because early resistance is normal during change.",
+      "C": "Review the turnaround and error data together with user feedback, identify whether the delay is a learning effect or design issue, and make targeted adjustments without abandoning the quality objective.",
+      "D": "Keep the process unchanged for another month so there is enough data before anyone reacts."
+    }
+  }
+]
