@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Aurora Spectrum</title>
-<link rel="stylesheet" href="./assets/v03.css">
+<link rel="stylesheet" href="./assets/v03.css?v=031">
 </head>
 <body>
 <div class="wrap">
   <div class="brand"><h1>Aurora Spectrum</h1><p>Connect • Drive • Execute • Think • Relate • Regulate</p></div>
 
   <div class="card" id="startCard">
-    <div class="eyebrow">Research assessment • v0.3 draft</div>
+    <div class="eyebrow">Research assessment • v0.3.1 draft</div>
     <h2>A deeper view of how you naturally work, decide and respond.</h2>
-    <p>Aurora Spectrum looks at six behavioural Spectrums, Applied Judgement, Workplace Reasoning and the type of work that tends to energise you. Personality items deliberately present two reasonable preferences — choose what is genuinely more like you, not what sounds more impressive.</p>
+    <p>Aurora combines six behavioural Spectrums, short decision and reasoning challenges, and a Work Preference Lens. The question styles are mixed throughout to keep the assessment focused and natural.</p>
     <div class="grid">
       <div><label for="fullName">Full name *</label><input id="fullName" type="text"></div>
       <div><label for="candidateEmail">Email</label><input id="candidateEmail" type="email"></div>
@@ -21,9 +21,9 @@
       <div><label for="candidateReference">Reference / candidate code</label><input id="candidateReference" type="text"></div>
       <label class="wide checkline"><input id="consentBox" type="checkbox"> <span>I understand Aurora Spectrum is currently a developmental research assessment and consent to my responses being stored for assessment, research and pilot-analysis purposes.</span></label>
     </div>
-    <div class="note" style="margin-top:16px"><b>How to answer:</b> choose the option that best reflects your natural tendency. There are no ideal personality results. For the paired questions you must lean toward one of two reasonable preferences; there is intentionally no neutral middle choice.</div>
+    <div class="note" style="margin-top:16px"><b>How to answer:</b> respond naturally rather than trying to find a “best” answer. In paired questions, both options can be reasonable; choose the one that is more like you.</div>
     <div id="startError" class="error hidden"></div>
-    <div class="actions"><span class="muted">79 items • approximately 35–45 minutes</span><button class="btn" id="beginBtn" type="button">Begin assessment</button></div>
+    <div class="actions"><span class="muted">60 items • approximately 20–25 minutes</span><button class="btn" id="beginBtn" type="button">Begin assessment</button></div>
   </div>
 
   <div class="card hidden" id="testCard">
@@ -45,18 +45,18 @@
     </div>
 
     <div class="card">
-      <div class="eyebrow">Part 1</div><h2 class="sectionTitle">Your six Core Spectrums</h2>
+      <div class="eyebrow">Your profile</div><h2 class="sectionTitle">Your six Core Spectrums</h2>
       <div class="spectrumGrid" id="spectrumResults"></div>
     </div>
 
     <div class="card">
-      <div class="eyebrow">Part 2 & 3</div><h2 class="sectionTitle">How you approach complex challenges</h2>
+      <div class="eyebrow">Capability</div><h2 class="sectionTitle">How you approach complex challenges</h2>
       <p class="muted">Applied Judgement and Workplace Reasoning are capability measures and are kept separate from your personality Spectrums.</p>
       <div class="capGrid" id="capabilityResults"></div>
     </div>
 
     <div class="card">
-      <div class="eyebrow">Part 4</div><h2 class="sectionTitle">Your Work Preference Lens</h2>
+      <div class="eyebrow">Work Preference Lens</div><h2 class="sectionTitle">What tends to energise you at work</h2>
       <p class="muted">These are self-identified preferences — they do not alter your Spectrum scores.</p>
       <div class="prefGrid" id="preferenceResults"></div>
     </div>
@@ -90,6 +90,6 @@
   </div>
 </div>
 
-<script src="./assets/v03.js"></script>
+<script src="./assets/v03.js?v=031"></script>
 </body>
 </html>
