@@ -1,4 +1,4 @@
-const API='https://gazmnfynliigaxgydeqh.supabase.co/functions/v1/aurora-spectrum-v031-api';
+const API='https://gazmnfynliigaxgydeqh.supabase.co/functions/v1/aurora-spectrum-api';
 const CFG_BASE='./config/';
 const FB='https://gazmnfynliigaxgydeqh.supabase.co/functions/v1/aurora-spectrum-feedback';
 const $=id=>document.getElementById(id);
